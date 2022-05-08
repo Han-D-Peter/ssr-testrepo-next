@@ -6,6 +6,6 @@ export type ButtonColorType = 'primary' | 'secondary' | 'default';
 export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   color?: ButtonColorType;
   size?: ButtonSizeType;
-  isLoading?: string;
+  isLoading?: boolean;
   disabled?: boolean;
 }

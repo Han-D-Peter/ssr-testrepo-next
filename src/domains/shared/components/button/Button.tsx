@@ -2,7 +2,7 @@ import { css, SerializedStyles } from '@emotion/react';
 import { forwardRef } from 'react';
 import { ButtonColorType, ButtonProps, ButtonSizeType } from './ButtonType';
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, type = 'button', onClick, children, color, size, isLoading, disabled = false, ...props }, ref) => {
     const ButtonCss = css`
       ${ButtonBaseCss}
@@ -25,6 +25,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     );
   },
 );
+
+export default Button;
 
 const ButtonBaseCss = css`
   display: flex;
