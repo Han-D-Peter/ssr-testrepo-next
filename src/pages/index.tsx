@@ -1,8 +1,9 @@
 import type { NextPage } from 'next';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
-import Writer from '../domains/shared/components/editor/Writer';
-import Button from '../domains/shared/components/Button';
+import Writer from 'src/domains/shared/components/editor/Writer';
+import Viewer from 'src/domains/shared/components/editor/Viewer';
+import Button from 'src/domains/shared/components/Button';
 import { useCounterStore } from '../domains/shared/store/counter';
 import { useEffect, useRef, useState } from 'react';
 import { Editor } from '@toast-ui/react-editor';
