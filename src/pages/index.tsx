@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Writer from '../domains/shared/components/editor/Writer';
-import Viewer from '../domains/shared/components/editor/Viewer';
-import Button from '../domains/shared/components/Button';
+import Writer from 'src/domains/shared/components/editor/Writer';
+import Viewer from 'src/domains/shared/components/editor/Viewer';
+import Button from 'src/domains/shared/components/Button';
 import { useCounterStore } from '../domains/shared/store/counter';
 
 const Home: NextPage = () => {
