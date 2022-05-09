@@ -1,5 +1,5 @@
 import { css, SerializedStyles } from '@emotion/react';
-import { forwardRef } from 'react';
+import { forwardRef, memo } from 'react';
 import { ButtonColorType, ButtonProps, ButtonSizeType } from './ButtonType';
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -26,7 +26,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   },
 );
 
-export default Button;
+export default memo(Button);
 
 const ButtonBaseCss = css`
   display: flex;
