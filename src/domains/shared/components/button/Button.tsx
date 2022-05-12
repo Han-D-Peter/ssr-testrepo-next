@@ -1,14 +1,23 @@
 import { css, SerializedStyles } from '@emotion/react';
+import { useMemo } from 'react';
 import { forwardRef, memo } from 'react';
-import { ButtonColorType, ButtonProps, ButtonSizeType } from './ButtonType';
+import { Color, ColorType } from '../../constants';
+import { ButtonProps, ButtonSizeType } from './ButtonType';
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, type = 'button', onClick, children, color, size, isLoading, disabled = false, ...props }, ref) => {
-    const ButtonCss = css`
-      ${ButtonBaseCss}
-      ${size && ButtonSizeCss[size]};
-      ${color && ButtonColorCss[color]};
-    `;
+    const ButtonCss = useMemo(
+      () => css`
+        ${ButtonBaseCss}
+        ${size && ButtonSizeCss[size]};
+        ${color &&
+        css`
+          background-color: ${Color[color]};
+          color: ${Color.White100};
+        `};
+      `,
+      [color, size],
+    );
 
     return (
       <button
@@ -39,27 +48,12 @@ const ButtonBaseCss = css`
 
 const ButtonSizeCss: Record<ButtonSizeType, SerializedStyles> = {
   small: css`
-    width: 280px;
+    width: 128px;
   `,
   medium: css`
-    width: 320px;
+    width: 256px;
   `,
   large: css`
-    width: 360px;
-  `,
-};
-
-const ButtonColorCss: Record<ButtonColorType, SerializedStyles> = {
-  primary: css`
-    background-color: royalblue;
-    color: white;
-  `,
-  secondary: css`
-    background-color: beige;
-    color: royalblue;
-  `,
-  default: css`
-    background-color: gray;
-    color: white;
+    width: 384px;
   `,
 };
