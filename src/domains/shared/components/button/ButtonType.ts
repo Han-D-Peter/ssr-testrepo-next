@@ -1,10 +1,10 @@
 import React from 'react';
+import { ColorType } from '../../constants';
 
 export type ButtonSizeType = 'large' | 'medium' | 'small';
-export type ButtonColorType = 'primary' | 'secondary' | 'default';
 
 export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
-  color?: ButtonColorType;
+  color?: ColorType;
   size?: ButtonSizeType;
   isLoading?: boolean;
   disabled?: boolean;
