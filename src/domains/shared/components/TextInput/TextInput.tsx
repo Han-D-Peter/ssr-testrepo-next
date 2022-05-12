@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { forwardRef, memo } from 'react';
+import React, { forwardRef, memo } from 'react';
 import { InputProps } from './TextInputType';
 
 const TextInput = forwardRef<HTMLInputElement, InputProps>(
