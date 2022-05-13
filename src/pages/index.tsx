@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Writer from 'src/domains/shared/components/editor/Writer';
 import Viewer from 'src/domains/shared/components/editor/Viewer';
 import Button from 'src/domains/shared/components/Button';
+import Header from 'src/domains/shared/components/Header';
 import { useCounterStore } from '../domains/shared/store/counter';
 
 const Home: NextPage = () => {
@@ -16,6 +17,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <Header />
       <main>
         <Writer />
         <Viewer />
@@ -23,15 +25,15 @@ const Home: NextPage = () => {
         <div>본 카운트: {count}</div>
         <TestComponent />
 
-        <Button color="primary" size="large" onClick={increase}>
+        <Button color="Primary100" size="large" onClick={increase}>
           증가하기
         </Button>
         <Viewer />
-        <Button color="secondary" size="medium" onClick={decrease}>
+        <Button color="Primary50" size="medium" onClick={decrease}>
           감소하기
         </Button>
         <Viewer />
-        <Button color="default" size="small" onClick={() => increaseByValue(5)}>
+        <Button color="Gray005" size="small" onClick={() => increaseByValue(5)}>
           많이 증가하기
         </Button>
       </main>
