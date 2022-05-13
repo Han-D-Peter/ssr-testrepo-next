@@ -1,11 +1,25 @@
 import { css, SerializedStyles } from '@emotion/react';
 import { useMemo } from 'react';
 import { forwardRef, memo } from 'react';
-import { Color, ColorType } from '../../constants';
+import { Color } from '../../constants';
 import { ButtonProps, ButtonSizeType } from './ButtonType';
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, type = 'button', onClick, children, color, size, isLoading, disabled = false, ...props }, ref) => {
+  (
+    {
+      className,
+      type = 'button',
+      onClick,
+      children,
+      color = 'Gray010',
+      textColor = 'Gray001',
+      size,
+      isLoading,
+      disabled = false,
+      ...props
+    },
+    ref,
+  ) => {
     const ButtonCss = useMemo(
       () => css`
         ${ButtonBaseCss}
@@ -13,7 +27,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ${color &&
         css`
           background-color: ${Color[color]};
-          color: ${Color.White100};
+          color: ${Color.Gray001};
         `};
       `,
       [color, size],
@@ -43,12 +57,12 @@ const ButtonBaseCss = css`
   align-items: center;
   border: none;
   border-radius: 6px;
-  height: 30px;
+  height: 32px;
 `;
 
 const ButtonSizeCss: Record<ButtonSizeType, SerializedStyles> = {
   small: css`
-    width: 128px;
+    width: 55px;
   `,
   medium: css`
     width: 256px;
