@@ -9,5 +9,5 @@ export interface PostCardProps {
   imageSrc: string;
   title: string;
   summary: string;
-  author: Author[];
+  authors: Author[];
 }

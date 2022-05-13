@@ -1,18 +1,19 @@
 import styled from '@emotion/styled';
 import { PostCardProps } from './PostCardType';
 
-const PostCard = ({ imageSrc, title, summary, author }: PostCardProps) => {
+const PostCard = ({ imageSrc, title, summary, authors }: PostCardProps) => {
   return (
     <CardLayout>
       <ImageSection>Image</ImageSection>
       <DiscriptionBox>
-        <CardTitle>Title</CardTitle>
-        <CardSummary>
-          bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
-          bla
-        </CardSummary>
+        <CardTitle>{title}</CardTitle>
+        <CardSummary>{summary}</CardSummary>
       </DiscriptionBox>
-      <CardAuthor>CardAuthor</CardAuthor>
+      <CardAuthor>
+        {authors.map((author) => (
+          <span>{author.name}</span>
+        ))}
+      </CardAuthor>
     </CardLayout>
   );
 };
@@ -44,11 +45,21 @@ const DiscriptionBox = styled('div')`
 
 const CardTitle = styled('div')`
   font-weight: 400;
-  font-size: 18px;
+  font-size: 16px;
   margin-bottom: 5px;
 `;
 
 const CardSummary = styled('div')`
+  display: block;
+  background-color: skyblue;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  word-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  height: 3.6em;
   font-weight: 400;
   font-size: 14px;
 `;
