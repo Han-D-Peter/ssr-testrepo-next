@@ -1,7 +1,7 @@
 import { css, SerializedStyles } from '@emotion/react';
 import { useMemo } from 'react';
 import { forwardRef, memo } from 'react';
-import { Color } from '../../constants';
+import { Color } from '../../constants/constants';
 import { ButtonProps, ButtonSizeType } from './ButtonType';
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
