@@ -1,5 +1,5 @@
 import React from 'react';
-import { ColorType } from '../../constants';
+import { ColorType } from 'src/domains/shared/constants/constants';
 
 export type ButtonSizeType = 'large' | 'medium' | 'small';
 
