@@ -3918,6 +3918,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-modal@npm:^3.13.1":
+  version: 3.13.1
+  resolution: "@types/react-modal@npm:3.13.1"
+  dependencies:
+    "@types/react": "*"
+  checksum: b0ad403e0051a2882e9086c6006cc342901b1c90caf760893b31717a5cbc04f86cc1ea7b5ce12a2c8350c9c09e9b344de3783404e70b7c7ea6a037d0ffd70e99
+  languageName: node
+  linkType: hard
+
 "@types/react-syntax-highlighter@npm:11.0.5":
   version: 11.0.5
   resolution: "@types/react-syntax-highlighter@npm:11.0.5"
@@ -6463,6 +6472,8 @@ __metadata:
     "@types/prismjs": ^1.26.0
     "@types/react": 18.0.6
     "@types/react-dom": 18.0.2
+    "@types/react-modal": ^3.13.1
+    emotion-normalize: ^11.0.1
     eslint: 8.14.0
     eslint-config-next: 12.1.5
     gh-pages: ^4.0.0
@@ -6470,6 +6481,7 @@ __metadata:
     prismjs: ^1.28.0
     react: 18.0.0
     react-dom: 18.0.0
+    react-modal: ^3.15.1
     react-query: ^3.38.1
     typescript: 4.6.3
     zustand: ^4.0.0-rc.1
@@ -6772,6 +6784,16 @@ __metadata:
   version: 3.0.0
   resolution: "emojis-list@npm:3.0.0"
   checksum: ddaaa02542e1e9436c03970eeed445f4ed29a5337dfba0fe0c38dfdd2af5da2429c2a0821304e8a8d1cadf27fdd5b22ff793571fa803ae16852a6975c65e8e70
+  languageName: node
+  linkType: hard
+
+"emotion-normalize@npm:^11.0.1":
+  version: 11.0.1
+  resolution: "emotion-normalize@npm:11.0.1"
+  peerDependencies:
+    "@emotion/react": ^11.0.0
+    react: ">=16.3.0"
+  checksum: f33c6ac75eca2d52d84cad99e359c0e73f78f814377121743c6002edb903864d8ad0adaf2a760dfac5a9c18dc5591ef01a7985f5c223973b10e7d20fa706f226
   languageName: node
   linkType: hard
 
@@ -7371,6 +7393,13 @@ __metadata:
     signal-exit: ^3.0.0
     strip-eof: ^1.0.0
   checksum: ddf1342c1c7d02dd93b41364cd847640f6163350d9439071abf70bf4ceb1b9b2b2e37f54babb1d8dc1df8e0d8def32d0e81e74a2e62c3e1d70c303eb4c306bc4
+  languageName: node
+  linkType: hard
+
+"exenv@npm:^1.2.0":
+  version: 1.2.2
+  resolution: "exenv@npm:1.2.2"
+  checksum: a894f3b60ab8419e0b6eec99c690a009c8276b4c90655ccaf7d28faba2de3a6b93b3d92210f9dc5efd36058d44f04098f6bbccef99859151104bfd49939904dc
   languageName: node
   linkType: hard
 
@@ -12192,6 +12221,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-lifecycles-compat@npm:^3.0.0":
+  version: 3.0.4
+  resolution: "react-lifecycles-compat@npm:3.0.4"
+  checksum: a904b0fc0a8eeb15a148c9feb7bc17cec7ef96e71188280061fc340043fd6d8ee3ff233381f0e8f95c1cf926210b2c4a31f38182c8f35ac55057e453d6df204f
+  languageName: node
+  linkType: hard
+
+"react-modal@npm:^3.15.1":
+  version: 3.15.1
+  resolution: "react-modal@npm:3.15.1"
+  dependencies:
+    exenv: ^1.2.0
+    prop-types: ^15.7.2
+    react-lifecycles-compat: ^3.0.0
+    warning: ^4.0.3
+  peerDependencies:
+    react: ^0.14.0 || ^15.0.0 || ^16 || ^17 || ^18
+    react-dom: ^0.14.0 || ^15.0.0 || ^16 || ^17 || ^18
+  checksum: ee99ca312c35bcec9ef0868babf970ce03c52801731e29be336bb6bdc867a1ecf00a73e1fb5bc3b1b1ef66ceb0c9b4a0199fadb85b1b9829f731409951b018f0
+  languageName: node
+  linkType: hard
+
 "react-popper-tooltip@npm:^3.1.1":
   version: 3.1.1
   resolution: "react-popper-tooltip@npm:3.1.1"
@@ -14560,7 +14611,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"warning@npm:^4.0.2":
+"warning@npm:^4.0.2, warning@npm:^4.0.3":
   version: 4.0.3
   resolution: "warning@npm:4.0.3"
   dependencies:
