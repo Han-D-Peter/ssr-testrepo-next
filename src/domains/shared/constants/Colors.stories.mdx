@@ -1,0 +1,39 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs';
+import { Color } from './constants';
+
+<Meta title="Colors" />
+
+<ColorPalette>
+  <ColorItem
+    title="theme.color.greyscale"
+    subtitle="Some of the greys"
+    colors={{ 
+      Gray001: '#fff',
+      Gray002: '#F7F7F7',
+      Gray003: '#E5E6EC',
+      Gray004: '#CBCDD6',
+      Gray005: '#BDBEC6',
+      Gray006: '#A2A5AD',
+   }}
+    />
+
+<ColorItem
+  title="theme.color.greyscale2"
+  subtitle="Some of the greys2"
+  colors={{
+    Gray007: '#8C8F9C',
+    Gray008: '#676A75',
+    Gray009: '#585B67',
+    Gray010: '#464851',
+    Gray011: '#303136',
+    Gray012: '#191A1C',
+  }}
+/>
+
+<ColorItem
+  title="theme.color.primary"
+  subtitle="Blue"
+  colors={{ Primary20: '#8FE8F7', Primary50: '#6DB5F2', Primary80: '#3C6EEB', Primary100: '#0016D9' }}
+/>
+
+</ColorPalette>
