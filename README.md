@@ -14,6 +14,14 @@
 
 `yarn run storybook`
 
+**_ storybook deploy _**
+
+`yarn run deploy-storybook`
+
+### 디자인 시스템
+
+https://ddd-community.github.io/DDD7-SSR-Frontend/react
+
 ## 기술 스택
 
 - Next.js
