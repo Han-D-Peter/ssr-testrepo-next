@@ -1,0 +1,3 @@
+interface DropdownListProps {
+  name: string;
+}
