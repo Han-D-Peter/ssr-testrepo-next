@@ -19,6 +19,16 @@ module.exports = {
         presets: [require.resolve('@emotion/babel-preset-css-prop')],
       },
     });
-    return config;
+
+    return {
+      ...config,
+      resolve: {
+        ...config.resolve,
+        alias: {
+          ...config.resolve.alias,
+          '@emotion/styled': toPath('node_modules/@emotion/styled'),
+        },
+      },
+    };
   },
 };
