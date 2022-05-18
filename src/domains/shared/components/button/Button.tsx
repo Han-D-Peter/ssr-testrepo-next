@@ -1,14 +1,37 @@
 import { css, SerializedStyles } from '@emotion/react';
-import { forwardRef } from 'react';
-import { ButtonColorType, ButtonProps, ButtonSizeType } from './ButtonType';
+import { useMemo } from 'react';
+import { forwardRef, memo } from 'react';
+import { Color } from '../../constants/constants';
+import { ButtonProps, ButtonSizeType } from './ButtonType';
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, type = 'button', onClick, children, color, size, isLoading, disabled = false, ...props }, ref) => {
-    const ButtonCss = css`
-      ${ButtonBaseCss}
-      ${size && ButtonSizeCss[size]};
-      ${color && ButtonColorCss[color]};
-    `;
+  (
+    {
+      className,
+      type = 'button',
+      onClick,
+      children,
+      color = 'Gray010',
+      textColor = 'Gray001',
+      size,
+      isLoading,
+      disabled = false,
+      ...props
+    },
+    ref,
+  ) => {
+    const ButtonCss = useMemo(
+      () => css`
+        ${ButtonBaseCss}
+        ${size && ButtonSizeCss[size]};
+        ${color &&
+        css`
+          background-color: ${Color[color]};
+          color: ${Color.Gray001};
+        `};
+      `,
+      [color, size],
+    );
 
     return (
       <button
@@ -26,7 +49,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   },
 );
 
-export default Button;
+export default memo(Button);
 
 const ButtonBaseCss = css`
   display: flex;
@@ -34,32 +57,17 @@ const ButtonBaseCss = css`
   align-items: center;
   border: none;
   border-radius: 6px;
-  height: 30px;
+  height: 32px;
 `;
 
 const ButtonSizeCss: Record<ButtonSizeType, SerializedStyles> = {
   small: css`
-    width: 280px;
+    width: 55px;
   `,
   medium: css`
-    width: 320px;
+    width: 256px;
   `,
   large: css`
-    width: 360px;
-  `,
-};
-
-const ButtonColorCss: Record<ButtonColorType, SerializedStyles> = {
-  primary: css`
-    background-color: royalblue;
-    color: white;
-  `,
-  secondary: css`
-    background-color: beige;
-    color: royalblue;
-  `,
-  default: css`
-    background-color: gray;
-    color: white;
+    width: 384px;
   `,
 };

@@ -1,6 +1,7 @@
 {
   "name": "delog-front",
   "packageManager": "yarn@3.2.0",
+  "homepage": "https://ddd-community.github.io/DDD7-SSR-Frontend/",
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
@@ -43,6 +44,7 @@
     "@types/react-dom": "18.0.2",
     "eslint": "8.14.0",
     "eslint-config-next": "12.1.5",
+    "gh-pages": "^4.0.0",
     "typescript": "4.6.3"
   }
 }
