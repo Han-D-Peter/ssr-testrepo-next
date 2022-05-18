@@ -6,7 +6,23 @@ import { EditorWithForwardedProps } from './EditorWithForwarded';
 const Editor = dynamic<EditorWithForwardedProps>(() => import('./EditorWithForwarded'), { ssr: false });
 
 const Writer = forwardRef<EditorType, {}>((props, ref) => {
-  return <Editor forwardedRef={ref} />;
+  return (
+    <Editor
+      forwardedRef={ref}
+      initialValue=" "
+      theme="dark"
+      previewStyle="vertical"
+      height="536px"
+      toolbarItems={[
+        ['heading', 'bold', 'italic', 'strike'],
+        ['hr', 'quote'],
+        ['ul', 'ol', 'task', 'indent', 'outdent'],
+        ['table', 'image', 'link'],
+        ['code', 'codeblock'],
+      ]}
+      {...props}
+    />
+  );
 });
 
 export default Writer;

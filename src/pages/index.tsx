@@ -2,7 +2,6 @@ import type { NextPage } from 'next';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Writer from 'src/domains/shared/components/editor/Writer';
-import Viewer from 'src/domains/shared/components/editor/Viewer';
 import Button from 'src/domains/shared/components/Button';
 import Header from 'src/domains/shared/components/Header';
 import { useCounterStore } from '../domains/shared/store/counter';
@@ -57,12 +56,10 @@ const Home: NextPage = () => {
         <Button color="Primary100" size="large" onClick={increase}>
           증가하기
         </Button>
-        <Viewer />
         <Button color="Primary50" size="medium" onClick={decrease}>
           감소하기
         </Button>
-        <Viewer />
-        <Button color="Gray005" size="small" onClick={() => increaseByValue(5)}>
+        <Button color="Gray005" size="medium" onClick={() => increaseByValue(5)}>
           많이 증가하기
         </Button>
       </main>
