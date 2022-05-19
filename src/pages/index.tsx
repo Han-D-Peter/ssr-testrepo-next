@@ -5,17 +5,21 @@ import Writer from 'src/domains/shared/components/editor/Writer';
 import Viewer from 'src/domains/shared/components/editor/Viewer';
 import Button from 'src/domains/shared/components/Button';
 import Header from 'src/domains/shared/components/Header';
+import Switch from 'src/domains/shared/components/Switch';
 
 import { useCounterStore } from '../domains/shared/store/counter';
 import { useEffect, useRef, useState } from 'react';
 import { Editor } from '@toast-ui/react-editor';
 
-const Viewer = dynamic(() => import('../domains/shared/components/editor/Viewer'), { ssr: false });
-
 const Home: NextPage = () => {
   const { count, increase, decrease, increaseByValue } = useCounterStore();
   const writerRef = useRef<Editor>(null);
   const [content, setContent] = useState('');
+  const [checked, setChecked] = useState(false);
+
+  const onChange = () => {
+    setChecked((prev) => !prev);
+  };
 
   const onSaveContent = () => {
     const writerInstance = writerRef.current?.getInstance();
@@ -51,6 +55,7 @@ const Home: NextPage = () => {
         <Writer ref={writerRef} />
         {content && <Viewer initialValue={content} />}
 
+        <Switch checked={checked} onChange={onChange} />
         <Button onClick={onSaveContent}>확인해보기</Button>
         <div>본 카운트: {count}</div>
         <TestComponent />
@@ -58,13 +63,10 @@ const Home: NextPage = () => {
         <Button color="Primary100" size="large" onClick={increase}>
           증가하기
         </Button>
-        <Viewer />
         <Button color="Primary50" size="medium" onClick={decrease}>
           감소하기
         </Button>
-        <Viewer />
         <Button color="Gray005" size="small" onClick={() => increaseByValue(5)}>
-
           많이 증가하기
         </Button>
       </main>
