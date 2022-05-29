@@ -6,16 +6,38 @@ import Viewer from 'src/domains/shared/components/editor/Viewer';
 import Button from 'src/domains/shared/components/Button';
 import Header from 'src/domains/shared/components/Header';
 import Switch from 'src/domains/shared/components/Switch';
+import MultipleSelect from 'src/domains/shared/components/MultipleSelect';
 
 import { useCounterStore } from '../domains/shared/store/counter';
 import { useEffect, useRef, useState } from 'react';
 import { Editor } from '@toast-ui/react-editor';
+import { ValueOption } from 'src/domains/shared/components/MultipleSelect/MultipleSelect.types';
+
+const options = [
+  {
+    label: 'ansejrrhkd@naver.com',
+    value: 'ansejrrhkd',
+  },
+  {
+    label: 'ansrjsdn@naver.com',
+    value: 'ansrjsdn',
+  },
+  {
+    label: 'test1234@naver.com',
+    value: 'test1234',
+  },
+  {
+    label: 'test55555@naver.com',
+    value: 'test55555',
+  },
+];
 
 const Home: NextPage = () => {
   const { count, increase, decrease, increaseByValue } = useCounterStore();
   const writerRef = useRef<Editor>(null);
   const [content, setContent] = useState('');
   const [checked, setChecked] = useState(false);
+  const [values, setValues] = useState<ValueOption[]>([]);
 
   const onChange = () => {
     setChecked((prev) => !prev);
@@ -55,6 +77,14 @@ const Home: NextPage = () => {
         <Writer ref={writerRef} />
         {content && <Viewer initialValue={content} />}
 
+        <MultipleSelect
+          options={options}
+          value={values}
+          onChange={(newValue) => {
+            console.log('뉴밸류', newValue);
+            setValues(newValue);
+          }}
+        />
         <Switch checked={checked} onChange={onChange} />
         <Button onClick={onSaveContent}>확인해보기</Button>
         <div>본 카운트: {count}</div>
@@ -66,7 +96,7 @@ const Home: NextPage = () => {
         <Button color="Primary50" size="medium" onClick={decrease}>
           감소하기
         </Button>
-        <Button color="Gray005" size="small" onClick={() => increaseByValue(5)}>
+        <Button color="Gray500" size="small" onClick={() => increaseByValue(5)}>
           많이 증가하기
         </Button>
       </main>
