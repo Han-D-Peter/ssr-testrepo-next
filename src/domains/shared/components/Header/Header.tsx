@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <HeaderContainer>
       <Logo />
-      <Button color="Gray010">로그인</Button>
+      <Button color="Gray800">로그인</Button>
     </HeaderContainer>
   );
 };

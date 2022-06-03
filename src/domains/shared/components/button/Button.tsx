@@ -11,9 +11,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       type = 'button',
       onClick,
       children,
-      color = 'Gray010',
-      textColor = 'Gray001',
-      size,
+      color = 'Gray800',
+      size = 'small',
       isLoading,
       disabled = false,
       ...props
@@ -27,7 +26,16 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ${color &&
         css`
           background-color: ${Color[color]};
-          color: ${Color.Gray001};
+          color: ${color === 'Gray800' ? Color.Primary100 : Color.White100};
+          transition: background-color 0.2s linear;
+
+          &:hover {
+            background-color: ${color === 'Gray800' ? Color.Gray750 : Color.Primary50};
+          }
+
+          &:active {
+            background-color: ${color === 'Gray800' ? Color.Gray850 : Color.Primary200};
+          }
         `};
       `,
       [color, size],
@@ -57,17 +65,19 @@ const ButtonBaseCss = css`
   align-items: center;
   border: none;
   border-radius: 6px;
-  height: 32px;
 `;
 
 const ButtonSizeCss: Record<ButtonSizeType, SerializedStyles> = {
   small: css`
-    width: 55px;
+    height: 31px;
+    padding: 8px 10px;
   `,
   medium: css`
-    width: 256px;
+    height: 40px;
+    padding: 11px 12px;
   `,
   large: css`
-    width: 384px;
+    height: 48px;
+    padding: 15px 14px;
   `,
 };

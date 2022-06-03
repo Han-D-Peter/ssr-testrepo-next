@@ -1,16 +1,12 @@
 import type { NextPage } from 'next';
-import dynamic from 'next/dynamic';
 import Head from 'next/head';
-import Writer from 'src/domains/shared/components/editor/Writer';
-import Viewer from 'src/domains/shared/components/editor/Viewer';
 import Button from 'src/domains/shared/components/Button';
 import Header from 'src/domains/shared/components/Header';
 import Switch from 'src/domains/shared/components/Switch';
 import MultipleSelect from 'src/domains/shared/components/MultipleSelect';
 
 import { useCounterStore } from '../domains/shared/store/counter';
-import { useEffect, useRef, useState } from 'react';
-import { Editor } from '@toast-ui/react-editor';
+import { useState } from 'react';
 import { ValueOption } from 'src/domains/shared/components/MultipleSelect/MultipleSelect.types';
 
 const options = [
@@ -34,35 +30,12 @@ const options = [
 
 const Home: NextPage = () => {
   const { count, increase, decrease, increaseByValue } = useCounterStore();
-  const writerRef = useRef<Editor>(null);
-  const [content, setContent] = useState('');
   const [checked, setChecked] = useState(false);
   const [values, setValues] = useState<ValueOption[]>([]);
 
   const onChange = () => {
     setChecked((prev) => !prev);
   };
-
-  const onSaveContent = () => {
-    const writerInstance = writerRef.current?.getInstance();
-    const writerContent = writerInstance?.isMarkdownMode ? writerInstance?.getMarkdown() : writerInstance?.getHTML();
-
-    if (writerContent) {
-      setContent(writerContent);
-    }
-  };
-
-  useEffect(() => {
-    if (writerRef.current) {
-      writerRef.current.getInstance().removeHook('addImageBlobHook');
-
-      writerRef.current.getInstance().addHook('addImageBlobHook', (blob, callback) => {
-        console.log(blob); // 이미지 업로드를 하고, 그 주소를 editor에 보여주게 하기
-        // https://velog.io/@developerjhp/Toast-UI-Editor%EC%97%90%EC%84%9C-s3%EB%A1%9C-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%85%EB%A1%9C%EB%93%9C-%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95
-        // https://myeongjae.kim/blog/2020/04/05/tui-editor-with-nextjs
-      });
-    }
-  }, []);
 
   return (
     <div>
@@ -74,9 +47,6 @@ const Home: NextPage = () => {
 
       <Header />
       <main>
-        <Writer ref={writerRef} />
-        {content && <Viewer initialValue={content} />}
-
         <MultipleSelect
           options={options}
           value={values}
@@ -86,17 +56,16 @@ const Home: NextPage = () => {
           }}
         />
         <Switch checked={checked} onChange={onChange} />
-        <Button onClick={onSaveContent}>확인해보기</Button>
         <div>본 카운트: {count}</div>
         <TestComponent />
 
         <Button color="Primary100" size="large" onClick={increase}>
           증가하기
         </Button>
-        <Button color="Primary50" size="medium" onClick={decrease}>
+        <Button color="Gray800" size="medium" onClick={decrease}>
           감소하기
         </Button>
-        <Button color="Gray500" size="small" onClick={() => increaseByValue(5)}>
+        <Button color="Primary100" size="small" onClick={() => increaseByValue(5)}>
           많이 증가하기
         </Button>
       </main>
