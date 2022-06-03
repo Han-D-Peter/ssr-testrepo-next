@@ -11,7 +11,7 @@ interface SwitchProps {
   className?: string;
 }
 
-const Switch: React.VFC<SwitchProps> = forwardRef<HTMLInputElement, SwitchProps>(
+const Switch: React.FC<SwitchProps> = forwardRef<HTMLInputElement, SwitchProps>(
   ({ checked = false, disabled, onChange, id, name, className, ...restProps }, ref) => {
     const handleSliderClick = () => {
       if (disabled) {
@@ -64,7 +64,7 @@ const SwitchSlider = styled.span`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: ${Color.Gray003};
+  background-color: ${Color.Gray300};
   transition: 0.4s;
   border-radius: 34px;
 
@@ -75,7 +75,7 @@ const SwitchSlider = styled.span`
     width: 14px;
     left: 2px;
     bottom: 2px;
-    background-color: ${Color.Gray001};
+    background-color: ${Color.Gray100};
     transition: 0.4s;
     border-radius: 50%;
   }

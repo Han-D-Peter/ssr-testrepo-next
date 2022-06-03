@@ -8,27 +8,33 @@ export default {
 } as ComponentMeta<typeof TextInput>;
 
 const Template: ComponentStory<typeof TextInput> = ({ ...args }) => {
-  const [text, setText] = useState(args.value);
+  const [firstText, setFirstText] = useState(args.value);
+  const [secondText, setSecondText] = useState(args.value);
 
   return (
     <section style={{ width: '400px' }}>
       <TextInput
         {...args}
-        id="storybook-email"
-        labelText="E-mail"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
+        placeholder="검색어를 입력하세요."
+        onChange={(e) => setFirstText(e.target.value)}
+        value={firstText}
+        variant="search"
       />
       <div style={{ margin: 20 }} />
-      <TextInput {...args} readOnly labelText="Phone number" value="82101234567" />
+
+      <TextInput
+        {...args}
+        id="storybook-email"
+        labelText="E-mail"
+        value={secondText}
+        onChange={(e) => setSecondText(e.target.value)}
+        type="email"
+      />
     </section>
   );
 };
 
 export const Example = Template.bind({});
 Example.args = {
-  withCount: true,
-  maxLength: 100,
-  placeholder: 'Front End',
-  value: 'DewsPaper Front',
+  placeholder: '검색어를 입력해주세요.',
 };
