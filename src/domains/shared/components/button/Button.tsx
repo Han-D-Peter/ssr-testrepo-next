@@ -27,7 +27,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ${color &&
         css`
           background-color: ${Color[color]};
-          color: ${Color.Gray001};
+          color: ${Color[textColor]};
         `};
       `,
       [color, size],
@@ -62,12 +62,18 @@ const ButtonBaseCss = css`
 
 const ButtonSizeCss: Record<ButtonSizeType, SerializedStyles> = {
   small: css`
-    width: 55px;
+    width: 54px;
+    height: 31px;
+    font-size: 12px;
   `,
   medium: css`
-    width: 256px;
+    width: 76px;
+    height: 40px;
+    font-size: 14px;
   `,
   large: css`
-    width: 384px;
+    width: 394px;
+    height: 48px;
+    font-size: 16px;
   `,
 };
