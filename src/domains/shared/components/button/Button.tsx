@@ -58,6 +58,7 @@ const ButtonBaseCss = css`
   border: none;
   border-radius: 6px;
   height: 32px;
+  min-width: 55px;
 `;
 
 const ButtonSizeCss: Record<ButtonSizeType, SerializedStyles> = {
