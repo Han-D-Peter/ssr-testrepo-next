@@ -1,7 +1,7 @@
 import { css, SerializedStyles } from '@emotion/react';
 import { useMemo } from 'react';
 import { forwardRef, memo } from 'react';
-import { Color } from '../../constants';
+import { Color, FontSize } from '../../constants';
 import { ButtonProps, ButtonSizeType } from './ButtonType';
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -30,7 +30,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           color: ${Color[textColor]};
         `};
       `,
-      [color, size],
+      [color, size, textColor],
     );
 
     return (
@@ -64,16 +64,16 @@ const ButtonSizeCss: Record<ButtonSizeType, SerializedStyles> = {
   small: css`
     width: 54px;
     height: 31px;
-    font-size: 12px;
+    font-size: ${FontSize.small};
   `,
   medium: css`
     width: 76px;
     height: 40px;
-    font-size: 14px;
+    font-size: ${FontSize.medium};
   `,
   large: css`
     width: 394px;
     height: 48px;
-    font-size: 16px;
+    font-size: ${FontSize.Large};
   `,
 };
