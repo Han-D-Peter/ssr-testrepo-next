@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import React, { forwardRef, memo, useMemo } from 'react';
-import { Color } from '../../constants/constants';
+import { Color, FontSize } from '../../constants';
+
 import { InputProps, InputVariant } from './TextInputType';
 
 const TextInput = forwardRef<HTMLInputElement, InputProps>(
@@ -92,6 +93,7 @@ const TextInputStyle = (variant: InputVariant, isError?: boolean) => css`
   align-items: center;
   width: 100%;
   height: 48px;
+  font-size: ${FontSize.medium};
   border: ${isError ? '1px solid red' : '1px solid black'};
   border-radius: 8px;
   padding: 12px 65px 12px 16px;
