@@ -1,10 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Button from 'src/domains/shared/components/Button';
-import Header from 'src/domains/shared/components/Header';
-import Switch from 'src/domains/shared/components/Switch';
-import MultipleSelect from 'src/domains/shared/components/MultipleSelect';
-
+import { MultipleSelect, Button, Header, Switch } from 'src/domains/shared/components';
 import { useCounterStore } from '../domains/shared/store/counter';
 import { useState } from 'react';
 import { ValueOption } from 'src/domains/shared/components/MultipleSelect/MultipleSelect.types';
