@@ -19,6 +19,10 @@ const GlobalStyle = () => (
         background-color: ${Color.Gray900};
       }
 
+      body.Overflow--hidden {
+        overflow-y: hidden;
+      }
+
       ${emotionNormalize}
       ${GlobalEditorStyle}
       ${GlobalModalStyle}
