@@ -13,6 +13,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       children,
       color = 'Gray800',
       size = 'small',
+      fixedWidth,
       isLoading,
       disabled = false,
       ...props
@@ -22,11 +23,17 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const ButtonCss = useMemo(
       () => css`
         ${ButtonBaseCss}
-        ${size && ButtonSizeCss[size]};
+        ${!fixedWidth && size && ButtonSizeCss[size]};
+        ${fixedWidth &&
+        css`
+          width: ${fixedWidth}px;
+          padding-top: 14px;
+          padding-bottom: 15px;
+        `}
         ${color &&
         css`
-          background-color: ${Color[color]};
-          color: ${color === 'Gray800' ? Color.Primary100 : Color.White100};
+          background-color: ${color === 'transparent' ? 'transparent' : Color[color]};
+          color: ${color === 'Gray800' || color === 'transparent' ? Color.Primary100 : Color.White100};
           transition: background-color 0.2s linear;
 
           &:hover {
@@ -38,7 +45,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           }
         `};
       `,
-      [color, size],
+      [color, size, fixedWidth],
     );
 
     return (
@@ -60,11 +67,13 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 export default memo(Button);
 
 const ButtonBaseCss = css`
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   border: none;
   border-radius: 6px;
+  cursor: pointer;
+  word-break: keep-all;
 `;
 
 const ButtonSizeCss: Record<ButtonSizeType, SerializedStyles> = {

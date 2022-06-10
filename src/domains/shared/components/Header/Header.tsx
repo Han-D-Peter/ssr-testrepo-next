@@ -1,6 +1,6 @@
-import React from 'react';
-import Logo from '../Logo';
-import Button from '../Button';
+import React, { memo } from 'react';
+import { Logo } from '../Logo';
+import { Button } from '../Button';
 import styled from '@emotion/styled';
 
 const Header = () => {
@@ -12,7 +12,7 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default memo(Header);
 
 const HeaderContainer = styled.header`
   display: flex;

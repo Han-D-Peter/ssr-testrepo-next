@@ -13,7 +13,7 @@ interface PostViewProps {
 // Next의 dynamic으로 import 시 codeSyntaxHighlight 설정이 어렵다.
 // Editor와 통일적이진 않지만, 해결 방법이 없어 useEffect 안에서 dynamic import 하는걸로 대체한다.
 
-export default function PostView({ initialValue, onLoadEnd }: PostViewProps) {
+const Viewer = ({ initialValue, onLoadEnd }: PostViewProps) => {
   const [PostViewer, setPostViewer] = useState<ReactElement | null>(null);
 
   const getViewerDynamic = useCallback(async () => {
@@ -36,4 +36,6 @@ export default function PostView({ initialValue, onLoadEnd }: PostViewProps) {
   }, [initialValue]);
 
   return PostViewer;
-}
+};
+
+export default Viewer;

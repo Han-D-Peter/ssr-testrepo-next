@@ -1,10 +1,10 @@
 import { css } from '@emotion/react';
-import React, { useMemo, useRef, useState } from 'react';
+import React, { memo, useMemo, useRef, useState } from 'react';
 import { Color } from '../../constants';
 import { useOnClickOutside } from '../../hooks/useOnClickOutside';
-import Icon from '../Icon';
-import Spacing from '../Spacing';
-import TextInput from '../TextInput';
+import { Icon } from '../Icon';
+import { Spacing } from '../Spacing';
+import { TextInput } from '../TextInput';
 import { MultipleSelectProps } from './MultipleSelect.types';
 
 const ESC_KEY = 'Escape';
@@ -98,7 +98,7 @@ const MultipleSelect: React.FC<MultipleSelectProps> = ({ options, onChange, valu
   );
 };
 
-export default MultipleSelect;
+export default memo(MultipleSelect);
 
 const MultipleSelectContainerStyle = css`
   position: relative;

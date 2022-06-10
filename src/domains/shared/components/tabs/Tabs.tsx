@@ -24,7 +24,7 @@ function Tabs({ tabsList }: TabsProps) {
 
   function onClickTab(e: React.MouseEvent<HTMLDivElement>) {
     e.preventDefault();
-    const { innerText } = e.target;
+    const { innter } = e.target;
     setTabView(innerText);
   }
 

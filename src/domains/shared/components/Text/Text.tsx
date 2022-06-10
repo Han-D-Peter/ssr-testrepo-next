@@ -1,19 +1,27 @@
 import { css, SerializedStyles } from '@emotion/react';
-import { PropsWithChildren, useMemo } from 'react';
+import { memo, PropsWithChildren, useMemo } from 'react';
+import { Color, ColorType } from '../../constants';
 
 type TextType = 'title28' | 'title24' | 'title16' | 'body14' | 'tag12';
 
 interface TextProps {
   type: TextType;
+  color?: ColorType;
 }
 
-const Text: React.FC<PropsWithChildren<TextProps>> = ({ children, type }) => {
-  const textStyle = useMemo(() => TextStyleMap[type], [type]);
+const Text: React.FC<PropsWithChildren<TextProps>> = ({ children, type, color }) => {
+  const textStyle = useMemo(
+    () => css`
+      ${TextStyleMap[type]}
+      color: ${Color[color || 'White100']};
+    `,
+    [type, color],
+  );
 
   return <div css={textStyle}>{children}</div>;
 };
 
-export default Text;
+export default memo(Text);
 
 export const TextStyleMap: Record<TextType, SerializedStyles> = {
   title28: css`

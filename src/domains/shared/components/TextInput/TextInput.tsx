@@ -74,7 +74,7 @@ const TextInput = forwardRef<HTMLInputElement, InputProps>(
   },
 );
 
-export default memo(TextInput);
+export default TextInput;
 
 const TextInputLabelStyle = css`
   display: flex;

@@ -51,6 +51,13 @@ const EditorWithForwarded = (props: EditorWithForwardedProps) => {
       previewStyle="vertical"
       theme="dark"
       plugins={[[codeSyntaxHighlight, { highlighter: Prism }], colorSyntax]}
+      toolbarItems={[
+        ['heading', 'bold', 'italic', 'strike'],
+        ['hr', 'quote'],
+        ['ul', 'ol', 'task', 'indent', 'outdent'],
+        ['table', 'image', 'link'],
+        ['code', 'codeblock'],
+      ]}
       ref={ref}
       autofocus
     />
