@@ -2,11 +2,12 @@ import React, { memo } from 'react';
 import { Logo } from '../Logo';
 import { Button } from '../Button';
 import styled from '@emotion/styled';
+import Router from 'next/router';
 
 const Header = () => {
   return (
     <HeaderContainer>
-      <Logo />
+      <Logo onClick={() => Router.push('/')} />
       <Button color="Gray800">로그인</Button>
     </HeaderContainer>
   );

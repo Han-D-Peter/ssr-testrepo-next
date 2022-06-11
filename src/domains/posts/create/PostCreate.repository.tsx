@@ -1,10 +1,11 @@
 import client from 'src/domains/shared/api/client';
-import { CreatePostData, CreatePostResponse } from './PostCreate.model';
+import { PostDetail } from 'src/domains/shared/model/post';
+import { CreatePostData } from './PostCreate.model';
 
-class PostCreate {
-  async create(data: CreatePostData): Promise<CreatePostResponse> {
+class PostCreateRepository {
+  async create(data: CreatePostData): Promise<PostDetail> {
     return client.post('/post', data);
   }
 }
 
-export default new PostCreate();
+export default new PostCreateRepository();

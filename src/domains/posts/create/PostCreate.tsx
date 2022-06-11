@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import React, { useState } from 'react';
+import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import Writer from 'src/domains/shared/components/editor/Writer';
 import { Color } from 'src/domains/shared/constants';
