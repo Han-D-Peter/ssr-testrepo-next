@@ -21,7 +21,11 @@ const Viewer = ({ initialValue, onLoadEnd }: PostViewProps) => {
     const codeSyntaxHighlight = await import('@toast-ui/editor-plugin-code-syntax-highlight');
 
     setPostViewer(
-      <Viewer initialValue={initialValue} plugins={[[codeSyntaxHighlight.default, { highlighter: Prism }]]} />,
+      <Viewer
+        initialValue={initialValue}
+        plugins={[[codeSyntaxHighlight.default, { highlighter: Prism }]]}
+        theme="dark"
+      />,
     );
 
     onLoadEnd?.();

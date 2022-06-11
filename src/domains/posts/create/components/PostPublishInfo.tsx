@@ -29,7 +29,7 @@ const PostPublishInfo = ({ onClose, register }: PostPublishInfoProps) => {
           </Button>
         </div>
         <Spacing col={24} />
-        <textarea css={postDescriptionStyle} placeholder="설명을 입력해주세요" {...register('thumnailContents')} />
+        <textarea css={postDescriptionStyle} placeholder="설명을 입력해주세요" {...register('thumbnailContents')} />
         <Spacing col={24} />
         <div css={postPreviewBottomWrapperStyle}>
           <label css={flexStyle} htmlFor="disclosure">
