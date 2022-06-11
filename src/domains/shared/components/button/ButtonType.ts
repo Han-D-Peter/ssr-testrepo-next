@@ -1,11 +1,11 @@
 import React from 'react';
 
 export type ButtonSizeType = 'large' | 'medium' | 'small';
-export type ButtonColorType = 'primary' | 'secondary' | 'default';
 
 export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
-  color?: ButtonColorType;
+  color?: 'Gray800' | 'Primary100' | 'transparent';
   size?: ButtonSizeType;
+  fixedWidth?: number;
   isLoading?: boolean;
   disabled?: boolean;
 }

@@ -1,14 +1,52 @@
 import { css, SerializedStyles } from '@emotion/react';
-import { forwardRef } from 'react';
-import { ButtonColorType, ButtonProps, ButtonSizeType } from './ButtonType';
+import { useMemo } from 'react';
+import { forwardRef, memo } from 'react';
+import { Color, FontSize } from '../../constants';
+import { ButtonProps, ButtonSizeType } from './ButtonType';
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, type = 'button', onClick, children, color, size, isLoading, disabled = false, ...props }, ref) => {
-    const ButtonCss = css`
-      ${ButtonBaseCss}
-      ${size && ButtonSizeCss[size]};
-      ${color && ButtonColorCss[color]};
-    `;
+  (
+    {
+      className,
+      type = 'button',
+      onClick,
+      children,
+      color = 'Gray800',
+      size = 'small',
+      fixedWidth,
+      isLoading,
+      disabled = false,
+      ...props
+    },
+    ref,
+  ) => {
+    const ButtonCss = useMemo(
+      () => css`
+        ${ButtonBaseCss}
+        ${!fixedWidth && size && ButtonSizeCss[size]};
+        ${fixedWidth &&
+        css`
+          width: ${fixedWidth}px;
+          padding-top: 14px;
+          padding-bottom: 15px;
+        `}
+        ${color &&
+        css`
+          background-color: ${color === 'transparent' ? 'transparent' : Color[color]};
+          color: ${color === 'Gray800' || color === 'transparent' ? Color.Primary100 : Color.White100};
+          transition: background-color 0.2s linear;
+
+          &:hover {
+            background-color: ${color === 'Gray800' ? Color.Gray750 : Color.Primary50};
+          }
+
+          &:active {
+            background-color: ${color === 'Gray800' ? Color.Gray850 : Color.Primary200};
+          }
+        `};
+      `,
+      [color, size, fixedWidth],
+    );
 
     return (
       <button
@@ -26,40 +64,29 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   },
 );
 
-export default Button;
+export default memo(Button);
 
 const ButtonBaseCss = css`
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   border: none;
   border-radius: 6px;
-  height: 30px;
+  cursor: pointer;
+  word-break: keep-all;
 `;
 
 const ButtonSizeCss: Record<ButtonSizeType, SerializedStyles> = {
   small: css`
-    width: 280px;
+    height: 31px;
+    padding: 8px 10px;
   `,
   medium: css`
-    width: 320px;
+    height: 40px;
+    padding: 11px 12px;
   `,
   large: css`
-    width: 360px;
-  `,
-};
-
-const ButtonColorCss: Record<ButtonColorType, SerializedStyles> = {
-  primary: css`
-    background-color: royalblue;
-    color: white;
-  `,
-  secondary: css`
-    background-color: beige;
-    color: royalblue;
-  `,
-  default: css`
-    background-color: gray;
-    color: white;
+    height: 48px;
+    padding: 15px 14px;
   `,
 };
