@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import React, { forwardRef, memo } from 'react';
-import { Color } from '../../constants/constants';
+import { Color } from '../../constants';
 
 interface SwitchProps {
   checked: boolean;
@@ -45,7 +45,7 @@ const SwitchInput = styled.input`
   height: 0;
 
   &:checked + span {
-    background-color: ${Color.Primary80};
+    background-color: ${Color.Primary100};
   }
 
   &:checked + span::before {

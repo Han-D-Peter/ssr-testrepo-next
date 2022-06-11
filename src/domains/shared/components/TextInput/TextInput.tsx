@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import React, { forwardRef, memo, useMemo } from 'react';
-import { Color } from '../../constants/constants';
+import { Color } from '../../constants';
 import { InputProps, InputVariant } from './TextInputType';
 
 const TextInput = forwardRef<HTMLInputElement, InputProps>(
@@ -74,7 +74,7 @@ const TextInput = forwardRef<HTMLInputElement, InputProps>(
   },
 );
 
-export default memo(TextInput);
+export default TextInput;
 
 const TextInputLabelStyle = css`
   display: flex;
