@@ -1,7 +1,5 @@
 export const Color = {
-  Primary20: '#8FE8F7',
-  Primary50: '#6DB5F2',
-  Primary80: '#3C6EEB',
+  Primary50: '#5A89FF',
   Primary100: '#3C6EEB',
   Primary200: '#2853BF',
 
@@ -22,6 +20,15 @@ export const Color = {
   Gray900: '#191A1C',
 };
 
+export const FontSize = {
+  xLarge: '28px',
+  Large: '16px',
+  medium: '14px',
+  small: '12px',
+};
+
 export type ColorType = keyof typeof Color;
+
+export type FontSizeType = keyof typeof FontSize;
 
 export const BASE_URL = process.env.NEXT_PUBLIC_API_URL;

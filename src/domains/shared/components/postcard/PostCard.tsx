@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { memo } from 'react';
 import { PostCardProps } from './PostCardType';
 
 const PostCard = ({ imageSrc, title, summary, authors }: PostCardProps) => {
@@ -74,4 +75,4 @@ const CardAuthor = styled('div')`
   border-bottom-right-radius: inherit;
 `;
 
-export default PostCard;
+export default memo(PostCard);

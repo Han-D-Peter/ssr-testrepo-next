@@ -26,17 +26,9 @@ const Template: ComponentStory<typeof Button> = ({ children, ...args }) => {
           ))}
         </div>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <h2>Primary50 Button</h2>
+          <h2>Gray800 Button</h2>
           {BUTTON_SIZES.map((size) => (
-            <Button key={size} {...args} color="Primary50" size={size} style={{ marginBottom: '20px' }}>
-              {children}
-            </Button>
-          ))}
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <h2>Gray010 Button</h2>
-          {BUTTON_SIZES.map((size) => (
-            <Button key={size} {...args} color="Gray010" size={size} style={{ marginBottom: '20px' }}>
+            <Button key={size} {...args} color="Gray800" size={size} style={{ marginBottom: '20px' }}>
               {children}
             </Button>
           ))}
