@@ -72,7 +72,6 @@ const ButtonBaseCss = css`
   align-items: center;
   border: none;
   border-radius: 6px;
-  height: 32px;
   min-width: 55px;
   cursor: pointer;
   word-break: keep-all;
