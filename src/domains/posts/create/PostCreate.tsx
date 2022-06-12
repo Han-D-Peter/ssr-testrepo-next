@@ -6,7 +6,7 @@ import { Color } from 'src/domains/shared/constants';
 import { useIsShown } from 'src/domains/shared/hooks/useIsShown';
 import TextareaAutosize from 'react-textarea-autosize';
 import PostPublishInfo from './components/PostPublishInfo';
-import { Button } from 'src/domains/shared/components';
+import { Button } from 'src/domains/shared/components/Button';
 import { CreatePostData } from './PostCreate.model';
 import { usePostCreateMutation } from './PostCreate.queries';
 import Router from 'next/router';
