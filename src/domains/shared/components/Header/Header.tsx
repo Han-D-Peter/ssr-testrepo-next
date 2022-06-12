@@ -4,7 +4,7 @@ import { Color } from '../../constants';
 import styled from '@emotion/styled';
 import { useModalStore } from '../../store/modal';
 import Modal from 'react-modal';
-import Loginmodal from '../loginmodal/LoginModal';
+import Loginmodal from '../LoginModal/LoginModal';
 import Router from 'next/router';
 import { Button } from '../Button';
 import { TextInput } from '../TextInput';

@@ -1,12 +1,12 @@
 import { css } from '@emotion/react';
 import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import Writer from 'src/domains/shared/components/editor/Writer';
+import Writer from 'src/domains/shared/components/Editor/Writer';
 import { Color } from 'src/domains/shared/constants';
 import { useIsShown } from 'src/domains/shared/hooks/useIsShown';
 import TextareaAutosize from 'react-textarea-autosize';
 import PostPublishInfo from './components/PostPublishInfo';
-import { Button } from 'src/domains/shared/components/Button';
+import { Button } from 'src/domains/shared/components';
 import { CreatePostData } from './PostCreate.model';
 import { usePostCreateMutation } from './PostCreate.queries';
 import Router from 'next/router';
