@@ -1,13 +1,13 @@
 import React, { useRef, useState, memo } from 'react';
 import { Logo } from '../Logo';
-import { Button } from '../button';
 import { Color } from '../../constants';
 import styled from '@emotion/styled';
-import TextInput from '../TextInput';
 import { useModalStore } from '../../store/modal';
 import Modal from 'react-modal';
 import Loginmodal from '../loginmodal/LoginModal';
 import Router from 'next/router';
+import { Button } from '../Button';
+import { TextInput } from '../TextInput';
 
 const customStyles = {
   content: {
@@ -23,7 +23,6 @@ const customStyles = {
     borderRadius: '16px',
   },
 };
-
 
 const Header = () => {
   const btnRef = useRef<HTMLButtonElement>(null);
@@ -56,7 +55,7 @@ const Header = () => {
           onChange={onChangeTextOnSearchBar}
         />
       </SearchBarContainer>
-      <Button color="Gray800" textColor="Primary100" size="small" onClick={openModal}>
+      <Button color="Gray800" size="small" onClick={openModal}>
         로그인
       </Button>
       <Modal

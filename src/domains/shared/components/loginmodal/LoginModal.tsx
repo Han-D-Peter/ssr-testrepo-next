@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import React from 'react';
 import { Color } from '../../constants';
 import { useModalStore } from '../../store/modal';
-import Icon from '../Icon';
+import { Icon } from '../Icon';
 
 const LoginModal = () => {
   const { showOffModal } = useModalStore();
