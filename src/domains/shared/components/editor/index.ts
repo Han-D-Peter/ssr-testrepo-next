@@ -1,2 +1,2 @@
-export * from './Viewer';
-export * from './Writer';
+export { default as Viewer } from './Viewer';
+export { default as Writer } from './Writer';

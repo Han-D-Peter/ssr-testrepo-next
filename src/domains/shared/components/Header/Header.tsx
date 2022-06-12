@@ -1,12 +1,13 @@
-import React, { useRef, useState } from 'react';
-import Logo from '../Logo';
-import Button from '../button';
+import React, { useRef, useState, memo } from 'react';
+import { Logo } from '../Logo';
+import { Button } from '../button';
 import { Color } from '../../constants';
 import styled from '@emotion/styled';
 import TextInput from '../TextInput';
 import { useModalStore } from '../../store/modal';
 import Modal from 'react-modal';
 import Loginmodal from '../loginmodal/LoginModal';
+import Router from 'next/router';
 
 const customStyles = {
   content: {
@@ -22,6 +23,7 @@ const customStyles = {
     borderRadius: '16px',
   },
 };
+
 
 const Header = () => {
   const btnRef = useRef<HTMLButtonElement>(null);
@@ -45,7 +47,7 @@ const Header = () => {
 
   return (
     <HeaderContainer>
-      <Logo />
+      <Logo onClick={() => Router.push('/')} />
       <SearchBarContainer>
         <TextInput
           placeholder="검색어를 입력하세요"
@@ -70,7 +72,7 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default memo(Header);
 
 const HeaderContainer = styled.header`
   background-color: ${Color.Gray900};
