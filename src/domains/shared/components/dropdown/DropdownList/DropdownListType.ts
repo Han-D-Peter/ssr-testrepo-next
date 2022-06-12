@@ -1,3 +1,3 @@
-interface DropdownListProps {
+export interface DropdownListProps {
   name: string;
 }
