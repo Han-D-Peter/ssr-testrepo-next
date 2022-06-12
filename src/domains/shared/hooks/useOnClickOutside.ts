@@ -11,7 +11,6 @@ export function useOnClickOutside(ref: RefObject<HTMLElement> | undefined, callb
 
     if (ref?.current && event.target !== null) {
       if (!ref.current.contains(event.target as Node)) {
-        event.stopPropagation();
         callback(event);
       }
     }

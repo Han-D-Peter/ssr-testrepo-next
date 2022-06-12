@@ -1,18 +1,19 @@
-import React from 'react';
-import Logo from '../Logo';
-import Button from '../Button';
+import React, { memo } from 'react';
+import { Logo } from '../Logo';
+import { Button } from '../Button';
 import styled from '@emotion/styled';
+import Router from 'next/router';
 
 const Header = () => {
   return (
     <HeaderContainer>
-      <Logo />
-      <Button color="Gray010">로그인</Button>
+      <Logo onClick={() => Router.push('/')} />
+      <Button color="Gray800">로그인</Button>
     </HeaderContainer>
   );
 };
 
-export default Header;
+export default memo(Header);
 
 const HeaderContainer = styled.header`
   display: flex;
