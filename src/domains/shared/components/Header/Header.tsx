@@ -3,13 +3,16 @@ import { Logo } from '../Logo';
 import { Color } from '../../constants';
 import styled from '@emotion/styled';
 import { useModalStore } from '../../store/modal';
-import Modal from 'react-modal';
+import ReactModal from 'react-modal';
 import Loginmodal from '../LoginModal/LoginModal';
 import Router from 'next/router';
 import { Button } from '../Button';
 import { TextInput } from '../TextInput';
 
 const customStyles = {
+  overlay: {
+    backgroundColor: 'black',
+  },
   content: {
     top: '50%',
     left: '50%',
@@ -21,6 +24,7 @@ const customStyles = {
     height: '320px',
     backgroundColor: `${Color.Gray800}`,
     borderRadius: '16px',
+    border: 'none',
   },
 };
 
@@ -58,15 +62,22 @@ const Header = () => {
       <Button color="Gray800" size="small" onClick={openModal}>
         로그인
       </Button>
-      <Modal
+      <ReactModal
         ariaHideApp={false}
         isOpen={showModal}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example"
+        overlayClassName={{
+          base: `Modal__overlay Modal__overlay--centered`,
+          afterOpen: 'Modal__overlay--after-open',
+          beforeClose: 'Modal__overlay--before-close',
+        }}
+        bodyOpenClassName={'Modal__body--open'}
+        closeTimeoutMS={300}
       >
         <Loginmodal />
-      </Modal>
+      </ReactModal>
     </HeaderContainer>
   );
 };
