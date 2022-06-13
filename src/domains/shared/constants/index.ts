@@ -32,3 +32,9 @@ export type ColorType = keyof typeof Color;
 export type FontSizeType = keyof typeof FontSize;
 
 export const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+
+export const REQUEST_AUTH_URL = {
+  KAKAO: process.env.KAKAO_AUTH_URL,
+  NAVER: process.env.NAVER_AUTH_URL,
+  GOOGLE: process.env.GOOGLE_AUTH_URL,
+};
