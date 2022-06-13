@@ -80,7 +80,7 @@ const DiscriptionBox = styled('div')`
 `;
 
 const CardTitle = styled('div')`
-  color: ${(props) => Color.White100};
+  color: ${Color.White100};
   font-weight: bold;
   font-size: 16px;
   margin-bottom: 5px;
@@ -89,7 +89,7 @@ const CardTitle = styled('div')`
 const CardSummary = styled('div')`
   display: block;
   overflow: hidden;
-  color: ${(props) => Color.Gray600};
+  color: ${Color.Gray600};
   text-overflow: ellipsis;
   white-space: normal;
   word-wrap: break-word;
