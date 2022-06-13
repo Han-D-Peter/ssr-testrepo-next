@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
+import Link from 'next/link';
 import React from 'react';
-import { Color } from '../../constants';
+import { Color, REQUEST_AUTH_URL } from '../../constants';
 import { useModalStore } from '../../store/modal';
 import { Icon } from '../Icon';
 
@@ -19,11 +20,23 @@ const LoginModal = () => {
       </LoginModalCloseBtn>
       <LoginModalMethodContainer>
         <LoginModalGoogleContainer>
-          <LoginModalSocialBtn>구글로 로그인</LoginModalSocialBtn>
+          <Link
+            href="http://dddssrbackend-env.ap-northeast-2.elasticbeanstalk.com/oauth2/authorization/google"
+            passHref
+          >
+            <LoginModalSocialBtn>구글로 로그인</LoginModalSocialBtn>
+          </Link>
         </LoginModalGoogleContainer>
         <LoginModalKakaoContainer>
-          <LoginModalSocialBtn>카카오톡으로 로그인</LoginModalSocialBtn>
+          <Link href="http://dddssrbackend-env.ap-northeast-2.elasticbeanstalk.com/oauth2/authorization/kakao" passHref>
+            <LoginModalSocialBtn>카카오톡으로 로그인</LoginModalSocialBtn>
+          </Link>
         </LoginModalKakaoContainer>
+        <LoginModalNaverContainer>
+          <Link href="http://dddssrbackend-env.ap-northeast-2.elasticbeanstalk.com/oauth2/authorization/naver" passHref>
+            <LoginModalSocialBtn>네이버로 로그인</LoginModalSocialBtn>
+          </Link>
+        </LoginModalNaverContainer>
       </LoginModalMethodContainer>
     </LoginModalContainer>
   );
@@ -61,7 +74,7 @@ const LoginModalMethodContainer = styled.div`
   flex-direction: column;
   margin-top: 48px;
   width: 275px;
-  height: 132px;
+  height: 180px;
 `;
 
 const LoginModalSocialContainer = styled.div`
@@ -81,11 +94,17 @@ const LoginModalKakaoContainer = styled(LoginModalSocialContainer)`
   background-color: #ffe812;
 `;
 
+const LoginModalNaverContainer = styled(LoginModalSocialContainer)`
+  background-color: #37cf5b;
+`;
+
 const LoginModalSocialBtn = styled.button`
   background: none;
   border: none;
   cursor: pointer;
   outline: inherit;
+  font-weight: bold;
+  font-size: 16px;
   width: 100%;
   height: 100%;
 `;
