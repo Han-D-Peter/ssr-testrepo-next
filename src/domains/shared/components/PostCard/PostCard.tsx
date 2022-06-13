@@ -1,19 +1,55 @@
 import styled from '@emotion/styled';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { memo } from 'react';
+import { Color } from '../../constants';
 import { PostCardProps } from './PostCardType';
 
-const PostCard = ({ imageSrc, title, summary, authors }: PostCardProps) => {
+const PostCard = ({ data }: PostCardProps) => {
+  const router = useRouter();
   return (
-    <CardLayout>
-      <ImageSection>Image</ImageSection>
+    <CardLayout
+      onClick={() => {
+        router.push(
+          {
+            pathname: `/posts/[postIdx]`,
+            query: {
+              postIdx: `${data.postIdx}`,
+            },
+          },
+          `/posts/${data.postIdx}`,
+        );
+      }}
+    >
+      <ImageSection>
+        <Image
+          src={data.thumbnailImg}
+          width="296px"
+          height="152px"
+          alt={data.thumbnailContents}
+          layout="intrinsic"
+          objectFit="cover"
+        />
+      </ImageSection>
       <DiscriptionBox>
-        <CardTitle>{title}</CardTitle>
-        <CardSummary>{summary}</CardSummary>
+        <CardTitle>{data.title}</CardTitle>
+        <CardSummary>{data.contents}</CardSummary>
       </DiscriptionBox>
       <CardAuthor>
-        {authors.map((author) => (
-          <span>{author.name}</span>
-        ))}
+        <div style={{ width: '20px', height: '20px', borderRadius: '200px', overflow: 'hidden', marginBottom: '5px' }}>
+          <Image
+            src={data.thumbnailImg}
+            width="20px"
+            height="20px"
+            alt={data.thumbnailContents}
+            layout="intrinsic"
+            objectFit="cover"
+          />
+        </div>
+        <div style={{ fontSize: '12px' }}>
+          <span style={{ color: `${Color.Gray600}` }}>by</span>
+          <span style={{ color: `${Color.White100}` }}>도토리 & 김진우</span>
+        </div>
       </CardAuthor>
     </CardLayout>
   );
@@ -22,38 +58,38 @@ const PostCard = ({ imageSrc, title, summary, authors }: PostCardProps) => {
 const CardLayout = styled('div')`
   position: relative;
   border-radius: 20px;
-  background-color: red;
+  background-color: ${Color.Gray800};
   width: 296px;
-  height: 331px;
+  height: 378px;
+  margin: 10px;
 `;
 
 const ImageSection = styled('div')`
   display: flex;
   justify-content: center;
-  align-items: center;
   color: white;
+  overflow: hidden;
   border-top-left-radius: inherit;
   border-top-right-radius: inherit;
-  background-color: blue;
   width: 100%;
   height: 152px;
 `;
 
 const DiscriptionBox = styled('div')`
-  background-color: green;
   margin: 20px 21px 21px 21px;
 `;
 
 const CardTitle = styled('div')`
-  font-weight: 400;
+  color: ${(props) => Color.White100};
+  font-weight: bold;
   font-size: 16px;
   margin-bottom: 5px;
 `;
 
 const CardSummary = styled('div')`
   display: block;
-  background-color: skyblue;
   overflow: hidden;
+  color: ${(props) => Color.Gray600};
   text-overflow: ellipsis;
   white-space: normal;
   word-wrap: break-word;
@@ -67,9 +103,9 @@ const CardSummary = styled('div')`
 
 const CardAuthor = styled('div')`
   position: absolute;
-  background-color: skyblue;
+  padding: 7px 21px 21px 21px;
   width: 100%;
-  height: 40px;
+  height: 60px;
   bottom: 0;
   border-bottom-left-radius: inherit;
   border-bottom-right-radius: inherit;
