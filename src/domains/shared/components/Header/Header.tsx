@@ -1,13 +1,14 @@
-import React, { useRef, useState, memo } from 'react';
-import { Logo } from '../Logo';
-import { Color } from '../../constants';
-import styled from '@emotion/styled';
-import { useModalStore } from '../../store/modal';
-import ReactModal from 'react-modal';
-import Loginmodal from '../LoginModal/LoginModal';
+import React, { useState, memo, useCallback } from 'react';
 import Router from 'next/router';
+import styled from '@emotion/styled';
+import ReactModal from 'react-modal';
+import { Logo } from '../Logo';
 import { Button } from '../Button';
 import { TextInput } from '../TextInput';
+import { Color } from '../../constants';
+import Loginmodal from '../LoginModal/LoginModal';
+import { useOnUser } from '../../hooks/useOnUser';
+import { useLoginModalStore } from '../../store/modal';
 
 const customStyles = {
   overlay: {
@@ -29,33 +30,31 @@ const customStyles = {
 };
 
 const Header = () => {
-  const btnRef = useRef<HTMLButtonElement>(null);
   const [searchText, setSearchText] = useState<string>('');
+  const [isLogin] = useOnUser();
+  const { showModal, showOnModal, showOffModal } = useLoginModalStore();
 
-  function onChangeTextOnSearchBar(e: React.ChangeEvent<HTMLInputElement>) {
+  const onChangeTextOnSearchBar = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const text = e.target.value;
     setSearchText(text);
-  }
+  }, []);
 
-  const { showModal, showOnModal, showOffModal } = useModalStore();
-
-  function openModal() {
-    console.log('click');
+  const openModal = useCallback(() => {
     showOnModal();
-  }
+  }, []);
 
-  function closeModal() {
+  const closeModal = useCallback(() => {
     showOffModal();
-  }
+  }, []);
 
   return (
     <HeaderContainer>
       <Logo onClick={() => Router.push('/')} />
       <SearchBarContainer>
         <TextInput
+          value={isLogin ? 'true' : 'false'}
           placeholder="검색어를 입력하세요"
           variant="search"
-          value={showModal ? 'true' : 'false'}
           onChange={onChangeTextOnSearchBar}
         />
       </SearchBarContainer>
