@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react';
 import { clearAuthToken, setAuthToken } from '../api/client';
+import { useUserStore } from '../store/user';
 
 type userOnUserResult = [boolean, ({ token, refreshToken }: TokenSet) => void, () => void];
 
@@ -9,19 +10,19 @@ interface TokenSet {
 }
 
 export const useOnUser = (): userOnUserResult => {
-  const [isLogin, setIsLogin] = useState(false);
+  const { isLoggedIn, login, logout } = useUserStore();
 
-  const loginWithTokens = ({ token, refreshToken }: TokenSet) => {
+  const setLoginWithTokens = ({ token, refreshToken }: TokenSet) => {
     setAuthToken(token);
     localStorage.setItem('refreshToken', refreshToken);
-    setIsLogin(true);
+    login({ userName: 'peter', imgSrc: 'http://upload2.inven.co.kr/upload/2019/12/27/bbs/i14210693079.jpg' });
   };
 
-  const logout = () => {
+  const setLogout = () => {
     clearAuthToken();
     localStorage.removeItem('refreshToken');
-    setIsLogin(false);
+    logout();
   };
 
-  return [isLogin, loginWithTokens, logout];
+  return [isLoggedIn, setLoginWithTokens, setLogout];
 };
