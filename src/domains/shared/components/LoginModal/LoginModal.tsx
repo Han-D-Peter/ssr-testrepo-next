@@ -2,11 +2,11 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 import React from 'react';
 import { Color, REQUEST_AUTH_URL } from '../../constants';
-import { useModalStore } from '../../store/modal';
+import { useLoginModalStore } from '../../store/modal';
 import { Icon } from '../Icon';
 
 const LoginModal = () => {
-  const { showOffModal } = useModalStore();
+  const { showOffModal } = useLoginModalStore();
 
   const closeModal = () => {
     showOffModal();

@@ -6,8 +6,8 @@ type ModalStore = {
   showOffModal: () => void;
 };
 
-export const useModalStore = create<ModalStore>((set) => ({
+export const useLoginModalStore = create<ModalStore>((set) => ({
   showModal: false,
-  showOnModal: () => set((state) => ({ showModal: true })),
-  showOffModal: () => set((state) => ({ showModal: false })),
+  showOnModal: () => set((state) => ({ ...state, showModal: true })),
+  showOffModal: () => set((state) => ({ ...state, showModal: false })),
 }));
