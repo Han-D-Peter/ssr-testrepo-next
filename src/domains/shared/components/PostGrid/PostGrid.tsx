@@ -16,7 +16,8 @@ const PostGrid = ({ contents, columnCounts = 3 }: PostGridProps) => {
 const PostWrapperStyle = styled.div<{ columnsCounts: number }>`
   display: grid;
   grid-template-columns: repeat(${(props) => props.columnsCounts}, 1fr);
-  gap: auto;
+  gap: 21px;
+  width: 1256px;
 `;
 
 export default PostGrid;

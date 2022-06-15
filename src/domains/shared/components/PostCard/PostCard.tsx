@@ -24,7 +24,7 @@ const PostCard = ({ data }: PostCardProps) => {
       <ImageSection>
         <Image
           src={data.thumbnailImg}
-          width="296px"
+          width="330px"
           height="152px"
           alt={data.thumbnailContents}
           layout="intrinsic"
@@ -56,12 +56,12 @@ const PostCard = ({ data }: PostCardProps) => {
 };
 
 const CardLayout = styled('div')`
+  display: inline;
   position: relative;
   border-radius: 20px;
   background-color: ${Color.Gray800};
-  width: 296px;
+  min-width: 296px;
   height: 378px;
-  margin: 10px;
 `;
 
 const ImageSection = styled('div')`
