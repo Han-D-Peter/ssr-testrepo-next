@@ -6,7 +6,6 @@ import { useGetPostsQuery } from './Home.queries';
 const Home = () => {
   const getPostsQuery = useGetPostsQuery();
 
-  /** 목업 데이터 */
   const postsMock = {
     content: [
       {
@@ -75,7 +74,12 @@ const Home = () => {
 };
 
 const HomeGridLayout = css`
+  display: flex;
+  justify-content: center;
+  max-width: 1256px;
   margin-top: 131px;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export default Home;
