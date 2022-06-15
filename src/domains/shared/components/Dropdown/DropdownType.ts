@@ -1,8 +1,10 @@
 import React from 'react';
 
+type ListNamesAndCallback = { name: string; callbackFn?: () => void };
+
 export interface DropdownProps {
-  title: string;
+  title?: string;
   TitleComponent?: React.ReactNode;
-  listNames: string[];
-  ListComponent?: React.FC<{ name: string }>;
+  listNamesAndCallback: ListNamesAndCallback[];
+  ListComponent?: React.FC<{ name: string; onClick: () => void | undefined }>;
 }
