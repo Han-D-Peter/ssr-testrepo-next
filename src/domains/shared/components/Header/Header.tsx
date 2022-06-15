@@ -7,8 +7,9 @@ import { Button } from '../Button';
 import { TextInput } from '../TextInput';
 import { Color } from '../../constants';
 import Loginmodal from '../LoginModal/LoginModal';
-import { useOnUser } from '../../hooks/useOnUser';
 import { useLoginModalStore } from '../../store/modal';
+import { useOnUser } from '../../hooks/useOnUser';
+import { UserProfile } from '../UserProfile';
 
 const customStyles = {
   overlay: {
@@ -31,8 +32,8 @@ const customStyles = {
 
 const Header = () => {
   const [searchText, setSearchText] = useState<string>('');
-  const [isLogin] = useOnUser();
   const { showModal, showOnModal, showOffModal } = useLoginModalStore();
+  const [isLoggedIn] = useOnUser();
 
   const onChangeTextOnSearchBar = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const text = e.target.value;
@@ -52,15 +53,19 @@ const Header = () => {
       <Logo onClick={() => Router.push('/')} />
       <SearchBarContainer>
         <TextInput
-          value={isLogin ? 'true' : 'false'}
+          value={searchText}
           placeholder="검색어를 입력하세요"
           variant="search"
           onChange={onChangeTextOnSearchBar}
         />
       </SearchBarContainer>
-      <Button color="Gray800" size="small" onClick={openModal}>
-        로그인
-      </Button>
+      {isLoggedIn ? (
+        <UserProfile />
+      ) : (
+        <Button color="Gray800" size="small" onClick={openModal}>
+          로그인
+        </Button>
+      )}
       <ReactModal
         ariaHideApp={false}
         isOpen={showModal}
