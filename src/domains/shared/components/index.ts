@@ -14,3 +14,5 @@ export * from './Switch';
 export * from './Tabs';
 export * from './Text';
 export * from './TextInput';
+export * from './Textarea';
+export * from './ProfileImage';

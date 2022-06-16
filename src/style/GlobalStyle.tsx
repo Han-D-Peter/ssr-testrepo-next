@@ -17,7 +17,6 @@ const GlobalStyle = () => (
       #__next {
         height: 100%;
         background-color: ${Color.Gray900};
-        font-family: ;
       }
 
       body.Overflow--hidden {
