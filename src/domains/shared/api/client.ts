@@ -24,19 +24,19 @@ const client = {
     return response.data;
   },
 
-  async post(url: string, body: any, config?: AxiosRequestConfig) {
+  async post(url: string, body?: any, config?: AxiosRequestConfig) {
     const response = await axios.post(url, body, config);
 
     return response.data;
   },
 
-  async put(url: string, body: any, config?: AxiosRequestConfig) {
+  async put(url: string, body?: any, config?: AxiosRequestConfig) {
     const response = await axios.put(url, body, config);
 
     return response.data;
   },
 
-  async patch(url: string, body: any, config?: AxiosRequestConfig) {
+  async patch(url: string, body?: any, config?: AxiosRequestConfig) {
     const response = await axios.patch(url, body, config);
 
     return response.data;
