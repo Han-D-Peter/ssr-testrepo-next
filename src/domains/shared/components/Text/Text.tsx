@@ -7,9 +7,10 @@ type TextType = 'title28' | 'title24' | 'title16' | 'body14' | 'tag12';
 interface TextProps {
   type: TextType;
   color?: ColorType;
+  className?: string;
 }
 
-const Text: React.FC<PropsWithChildren<TextProps>> = ({ children, type, color }) => {
+const Text: React.FC<PropsWithChildren<TextProps>> = ({ children, className, type, color }) => {
   const textStyle = useMemo(
     () => css`
       ${TextStyleMap[type]}
@@ -18,7 +19,11 @@ const Text: React.FC<PropsWithChildren<TextProps>> = ({ children, type, color })
     [type, color],
   );
 
-  return <div css={textStyle}>{children}</div>;
+  return (
+    <div className={className} css={textStyle}>
+      {children}
+    </div>
+  );
 };
 
 export default memo(Text);

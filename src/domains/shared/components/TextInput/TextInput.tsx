@@ -44,12 +44,13 @@ const TextInput = forwardRef<HTMLInputElement, InputProps>(
           <div css={TextInputContainerStyle}>
             <input
               css={TextInputCss}
+              id={id}
               ref={ref}
               className={className}
               placeholder={placeholder}
               name={name}
               type={type}
-              value={value || ''}
+              value={value}
               disabled={disabled}
               readOnly={readOnly}
               required={required}
@@ -99,6 +100,8 @@ const TextInputStyle = (variant: InputVariant, isError?: boolean) => css`
   color: ${Color.Gray600};
   background-color: ${Color.Gray800};
   box-sizing: border-box;
+  outline: none;
+  border: none;
 
   ${variant === 'search' &&
   css`
