@@ -18,6 +18,9 @@ export const Color = {
   Gray700: '#585B67',
   Gray850: '#212225',
   Gray900: '#191A1C',
+  Gray950: '#111111',
+
+  Red100: '#EB3C3C',
 };
 
 export const FontSize = {
