@@ -1,7 +1,7 @@
 import React from 'react';
 
 export interface ValueOption {
-  key?: string;
+  key?: string | number;
   leftComponent?: React.ReactNode;
   label: string;
   value: string | number;

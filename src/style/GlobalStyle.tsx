@@ -1,6 +1,5 @@
 import { css, Global } from '@emotion/react';
 import emotionNormalize from 'emotion-normalize';
-import { Color } from 'src/domains/shared/constants';
 import { GlobalEditorStyle } from './GlobalEditorStyle';
 import { GlobalModalStyle } from './GlobalModalStyle';
 
@@ -16,7 +15,7 @@ const GlobalStyle = () => (
       body,
       #__next {
         height: 100%;
-        background-color: ${Color.Gray900};
+        background-color: #191a1c;
       }
 
       body.Overflow--hidden {
