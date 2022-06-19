@@ -20,7 +20,7 @@ const PostCreate = () => {
   const onSubmit = handleSubmit((data) => {
     postCreateMutation.mutate(data, {
       onSuccess: (result) => {
-        Router.push(`/post/${result.postIdx}`);
+        Router.push(`/posts/${result.postIdx}`);
       },
     });
   });
