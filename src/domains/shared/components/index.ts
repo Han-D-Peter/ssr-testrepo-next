@@ -16,3 +16,5 @@ export * from './Text';
 export * from './TextInput';
 export * from './Textarea';
 export * from './ProfileImage';
+export * from './CommentList';
+export * from './Comment';
