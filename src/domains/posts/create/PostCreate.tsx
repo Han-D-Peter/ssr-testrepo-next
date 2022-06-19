@@ -6,11 +6,11 @@ import { Color } from 'src/domains/shared/constants';
 import { useIsShown } from 'src/domains/shared/hooks/useIsShown';
 import TextareaAutosize from 'react-textarea-autosize';
 import PostPublishInfo from './components/PostPublishInfo';
-import { Button, MultipleSelect } from 'src/domains/shared/components';
+import { Button, MultipleSelect, Spacing, Switch, Text } from 'src/domains/shared/components';
 import { CreatePostData } from './PostCreate.model';
 import { usePostCreateMutation } from './PostCreate.queries';
 import Router from 'next/router';
-import { ValueOption } from 'src/domains/shared/components/MultipleSelect/MultipleSelect.types';
+import { ValueOption } from 'src/domains/shared/components/MultipleSelect/MultipleSelectTypes';
 import Image from 'next/image';
 
 const PostCreate = () => {
@@ -27,6 +27,7 @@ const PostCreate = () => {
 
   const [isModalShown, handleModalOpen, handleModalClose] = useIsShown(false);
   const [selectedFriendsList, setSelectedFriendsList] = useState<ValueOption[]>([]);
+  const [isHaveFriendsChecked, setIsHaveFriendsChecked] = useState(false);
 
   return (
     <section css={createSectionStyle}>
@@ -44,6 +45,7 @@ const PostCreate = () => {
           render={({ field }) => {
             return (
               <Writer
+                height="600px"
                 initialValue=""
                 onChange={(value) => {
                   field.onChange(value);
@@ -52,6 +54,19 @@ const PostCreate = () => {
             );
           }}
         />
+
+        <div css={previewPlaceholderStyle}>출판 예상 화면</div>
+
+        <Spacing col={34} />
+
+        <div css={flexBoxStyle}>
+          <Text type="title16" color="White100">
+            함께한 사용자가 있나요?
+          </Text>
+          <Spacing row={5} />
+          <Switch checked={isHaveFriendsChecked} onChange={() => setIsHaveFriendsChecked((prev) => !prev)} />
+        </div>
+        <Spacing col={10} />
 
         <MultipleSelect
           placeholder="친구를 찾아주세요."
@@ -63,6 +78,8 @@ const PostCreate = () => {
           }))}
           onChange={(values) => setSelectedFriendsList(values)}
           value={selectedFriendsList}
+          disabled={!isHaveFriendsChecked}
+          emptyListMessage="검색된 친구가 없습니다."
         />
         {isModalShown && <PostPublishInfo onClose={handleModalClose} register={register} />}
       </form>
@@ -79,6 +96,18 @@ const createSectionStyle = css`
 
 const postFormContainer = css`
   padding-bottom: 200px;
+`;
+
+const flexBoxStyle = css`
+  display: flex;
+`;
+
+const previewPlaceholderStyle = css`
+  position: absolute;
+  top: 70%;
+  left: 72%;
+  transform: translate(-72%, -70%);
+  color: ${Color.White100};
 `;
 
 const titleWrapperStyle = css`

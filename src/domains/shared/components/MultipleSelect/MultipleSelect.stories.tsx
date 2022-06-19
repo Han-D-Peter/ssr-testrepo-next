@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React, { useState } from 'react';
 import MultipleSelect from './MultipleSelect';
-import { ValueOption } from './MultipleSelect.types';
+import { ValueOption } from './MultipleSelectTypes';
 
 export default {
   title: 'MultipleSelect',

@@ -7,10 +7,11 @@ const Editor = dynamic<EditorWithForwardedProps>(() => import('./EditorWithForwa
 interface WriterProps {
   initialValue?: string;
   onChange: (value: string) => void;
+  height?: string;
 }
 
-const Writer: React.FC<WriterProps> = ({ initialValue, onChange }) => {
-  return <Editor onChange={onChange} initialValue={initialValue} />;
+const Writer: React.FC<WriterProps> = ({ initialValue, onChange, height }) => {
+  return <Editor onChange={onChange} initialValue={initialValue} height={height} />;
 };
 
 export default Writer;

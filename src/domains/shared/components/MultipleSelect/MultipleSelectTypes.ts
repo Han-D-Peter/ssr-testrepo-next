@@ -8,8 +8,10 @@ export interface ValueOption {
 }
 
 export interface MultipleSelectProps {
+  disabled?: boolean;
   options?: ValueOption[];
   value: ValueOption[];
   onChange: (newValue: ValueOption[]) => void;
   placeholder?: string;
+  emptyListMessage?: string;
 }
