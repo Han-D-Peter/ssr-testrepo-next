@@ -2,21 +2,23 @@ import { css, SerializedStyles } from '@emotion/react';
 import { memo, PropsWithChildren, useMemo } from 'react';
 import { Color, ColorType } from '../../constants';
 
-type TextType = 'title28' | 'title24' | 'title16' | 'body14' | 'tag12';
+type TextType = 'title28' | 'title24' | 'title16' | 'body18' | 'body16' | 'body14' | 'tag12';
 
 interface TextProps {
   type: TextType;
   color?: ColorType;
+  useInline?: boolean;
   className?: string;
 }
 
-const Text: React.FC<PropsWithChildren<TextProps>> = ({ children, className, type, color }) => {
+const Text: React.FC<PropsWithChildren<TextProps>> = ({ children, className, type, color, useInline }) => {
   const textStyle = useMemo(
     () => css`
       ${TextStyleMap[type]}
       color: ${Color[color || 'White100']};
+      display: ${useInline ? 'inline-flex' : 'block'};
     `,
-    [type, color],
+    [type, color, useInline],
   );
 
   return (
@@ -43,6 +45,16 @@ export const TextStyleMap: Record<TextType, SerializedStyles> = {
     font-size: 16px;
     line-height: 19px;
     font-weight: 700;
+  `,
+  body18: css`
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 400;
+  `,
+  body16: css`
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: 400;
   `,
   body14: css`
     font-size: 14px;

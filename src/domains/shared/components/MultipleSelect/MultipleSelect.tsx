@@ -5,11 +5,18 @@ import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 import { Icon } from '../Icon';
 import { Spacing } from '../Spacing';
 import { TextInput } from '../TextInput';
-import { MultipleSelectProps } from './MultipleSelect.types';
+import { MultipleSelectProps } from './MultipleSelectTypes';
 
 const ESC_KEY = 'Escape';
 
-const MultipleSelect: React.FC<MultipleSelectProps> = ({ options, onChange, value, placeholder }) => {
+const MultipleSelect: React.FC<MultipleSelectProps> = ({
+  options,
+  onChange,
+  value,
+  placeholder,
+  disabled,
+  emptyListMessage,
+}) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const [searchText, setSearchText] = useState('');
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,45 +44,52 @@ const MultipleSelect: React.FC<MultipleSelectProps> = ({ options, onChange, valu
   });
 
   return (
-    <div ref={ref} css={MultipleSelectContainerStyle}>
-      <TextInput
-        onChange={handleTextChange}
-        value={searchText}
-        type="text"
-        onFocus={() => setIsFocus(true)}
-        onKeyDown={onKeyDown}
-        placeholder={placeholder}
-      />
-      {isFocus && renderedOptions && (
-        <ul css={ListContainerStyle}>
-          {renderedOptions.map((renderedOption) => {
-            const optionIndex = value.findIndex((option) => option.value === renderedOption.value);
+    <>
+      <div ref={ref} css={MultipleSelectContainerStyle}>
+        <TextInput
+          onChange={handleTextChange}
+          value={searchText}
+          type="text"
+          onFocus={() => setIsFocus(true)}
+          onKeyDown={onKeyDown}
+          placeholder={placeholder}
+          disabled={disabled}
+        />
+        {isFocus && renderedOptions && (
+          <ul css={ListContainerStyle}>
+            {renderedOptions.length > 0 ? (
+              renderedOptions.map((renderedOption) => {
+                const optionIndex = value.findIndex((option) => option.value === renderedOption.value);
 
-            return (
-              <li
-                key={renderedOption.key || renderedOption.value}
-                css={ListItemStyle}
-                onClick={() => {
-                  if (optionIndex >= 0) {
-                    onChange(value.filter((option) => option.value !== renderedOption.value));
+                return (
+                  <li
+                    key={renderedOption.key || renderedOption.value}
+                    css={ListItemStyle}
+                    onClick={() => {
+                      if (optionIndex >= 0) {
+                        onChange(value.filter((option) => option.value !== renderedOption.value));
 
-                    return;
-                  }
-                  onChange([...value, renderedOption]);
-                }}
-              >
-                {renderedOption.label}
+                        return;
+                      }
+                      onChange([...value, renderedOption]);
+                    }}
+                  >
+                    {renderedOption.label}
 
-                {optionIndex >= 0 && (
-                  <div css={IconWrapperStyle}>
-                    <Icon icon="Check" color="white" size={24} />
-                  </div>
-                )}
-              </li>
-            );
-          })}
-        </ul>
-      )}
+                    {optionIndex >= 0 && (
+                      <div css={IconWrapperStyle}>
+                        <Icon icon="Check" color="white" size={24} />
+                      </div>
+                    )}
+                  </li>
+                );
+              })
+            ) : (
+              <li css={ListItemStyle}>{emptyListMessage ?? 'Not Found'}</li>
+            )}
+          </ul>
+        )}
+      </div>
 
       <ul css={SelectedListContainerStyle}>
         {value.map((selectedOption) => (
@@ -94,7 +108,7 @@ const MultipleSelect: React.FC<MultipleSelectProps> = ({ options, onChange, valu
           </li>
         ))}
       </ul>
-    </div>
+    </>
   );
 };
 
