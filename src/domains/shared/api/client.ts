@@ -1,7 +1,7 @@
 import Axios, { AxiosRequestConfig } from 'axios';
 import { BASE_URL } from '../constants';
 
-const axios = Axios.create({
+export const axios = Axios.create({
   baseURL: `${BASE_URL}/api`,
   withCredentials: true,
   headers: {
